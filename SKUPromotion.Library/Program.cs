@@ -58,7 +58,7 @@ namespace SKUPromotion.Library
         static void Main(string[] args)
         {
             SKUPromotions sKUPromotions = new SKUPromotions();
-            double AItems = 1, BItems = 1, CItems = 1, DItems = 0;
+            double AItems = 5, BItems = 5, CItems = 1, DItems = 0;
 
             Console.WriteLine("Total Cost of {0} A SKU's, {1} B SKU's, {2} C SKU's and {3} D SKU's after applying Active Promotion is {4} .",
                                 AItems, BItems, CItems, DItems, sKUPromotions.CalculateTotalSKUPromotionAmount(AItems, BItems, CItems, DItems));
