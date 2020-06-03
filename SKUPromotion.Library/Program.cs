@@ -15,18 +15,36 @@ namespace SKUPromotion.Library
         A_SKUs_To_Promo = 3,
         B_SKUs_To_Promo = 2,
         APromoPrice = 130,
+        BPromoPrice = 45,
     }
 
     public class SKUPromotions
     {
-        double _totalAmount = 0;
+        double _totalAmount = 0, totalPromtionItems = 0, totalNonPromoItems = 0;
+		
+		private double CalculatePromoPriceForSingleItem(double totalUnits, int unitForPromoItems, int PromoPrice, int nonPromoPrice)
+        {
+            try
+            {
+                totalPromtionItems = Math.Floor(totalUnits / (int)(unitForPromoItems));
+                totalNonPromoItems = totalUnits % (int)(unitForPromoItems);
+
+                return totalPromtionItems * (int)(PromoPrice) + totalNonPromoItems * (int)(nonPromoPrice);
+            }
+            catch
+            {
+                throw;
+            }
+        }
         public double CalculateTotalSKUPromotionAmount(double ATotalUnits, double BTotalUnits, double CTotalUnits, double DTotalUnits)
         {
             try
             {
 
-                _totalAmount += ATotalUnits / (int)SKUUnitPrices.A_SKUs_To_Promo < 0 ? ATotalUnits * (int)SKUUnitPrices.ANonPromoPrice : 
-                    (ATotalUnits / (int)SKUUnitPrices.A_SKUs_To_Promo) * (int)SKUUnitPrices.APromoPrice;
+                #region A Promotion
+                _totalAmount += CalculatePromoPriceForSingleItem(ATotalUnits, (int)SKUUnitPrices.A_SKUs_To_Promo, (int)SKUUnitPrices.APromoPrice, (int)SKUUnitPrices.ANonPromoPrice);
+                #endregion
+
                 _totalAmount += BTotalUnits / (int)SKUUnitPrices.B_SKUs_To_Promo > 0 ? ATotalUnits * (int)SKUUnitPrices.BNonPromoPrice : 0;
                 
                 //Logic for C or D Non Promo Price if left out
