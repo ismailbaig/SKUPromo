@@ -11,7 +11,7 @@ namespace SKUPromotion.Library
     {
         public double Add(double ATotalUnits, double BTotalUnits, double CTotalUnits, double DTotalUnits)
         {
-            return 4;
+            return ATotalUnits + BTotalUnits + CTotalUnits + DTotalUnits;
         }
     }
 
