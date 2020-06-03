@@ -21,23 +21,8 @@ namespace SKUPromotion.Library
 
     public class SKUPromotions
     {
-        double _totalAmount = 0, totalPromtionItems = 0, totalNonPromoItems = 0;
+        double _totalAmount = 0;
 		
-		//private double CalculatePromoPriceForSingleItem(double totalUnits, int unitForPromoItems, int PromoPrice, int nonPromoPrice)
-  //      {
-  //          try
-  //          {
-  //              totalPromtionItems = Math.Floor(totalUnits / (int)(unitForPromoItems));
-  //              totalNonPromoItems = totalUnits % (int)(unitForPromoItems);
-
-  //              return totalPromtionItems * (int)(PromoPrice) + totalNonPromoItems * (int)(nonPromoPrice);
-  //          }
-  //          catch
-  //          {
-  //              throw;
-  //          }
-  //      }
-
         public double CalculateTotalSKUPromotionAmount(double ATotalUnits, double BTotalUnits, double CTotalUnits, double DTotalUnits)
         {
             try
@@ -51,12 +36,14 @@ namespace SKUPromotion.Library
                 _totalAmount += Util.CalculatePromoPriceForSingleItem(BTotalUnits, (int)SKUUnitPrices.B_SKUs_To_Promo, (int)SKUUnitPrices.BPromoPrice, (int)SKUUnitPrices.BNonPromoPrice);
                 #endregion
 
-                //Logic for C and D combined Promotion Price
+                #region C n D Promotion
                 _totalAmount += Math.Min(CTotalUnits, DTotalUnits) * (int)SKUUnitPrices.CnDPromoPirce;
+                #endregion
 
-                //Logic for C or D Non Promo Price if left out
+                #region C n D Left out Logic
                 _totalAmount += (CTotalUnits - DTotalUnits) > 0 ? Math.Abs(CTotalUnits - DTotalUnits) * (int)(SKUUnitPrices.CNonPromoPrice) :
                                                                     Math.Abs(CTotalUnits - DTotalUnits) * (int)(SKUUnitPrices.DNonPromoPrice);
+                #endregion
 
                 return _totalAmount;
             }
@@ -66,8 +53,7 @@ namespace SKUPromotion.Library
             }
         }
     }
-
-        class Program
+    class Program
     {
         static void Main(string[] args)
         {
