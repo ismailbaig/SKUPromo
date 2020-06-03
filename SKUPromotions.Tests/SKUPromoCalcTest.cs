@@ -15,13 +15,13 @@ namespace SKUPromotions.Tests
         }
 
         [TestMethod]
-        public void DummyTestToCheckIfRefactorWorked()
+        public void NoPromoIncludedTest()
         {
             //Arrange
-            double AItems = 1, BItems = 1, CItems = 1, DItems = 1, expected = 4, actual = 0;
+            double AItems = 1, BItems = 1, CItems = 1, DItems = 0, expected = 100, actual = 0;
 
             //Act
-            actual = _sut_skuPromos.Add(AItems, BItems, CItems, DItems);
+            actual = _sut_skuPromos.CalculateTotalSKUPromotionAmount(AItems, BItems, CItems, DItems);
 
             //Assert            
             Assert.AreEqual(expected, actual);
