@@ -1,0 +1,6 @@
+C:\Users\dell\Documents\My Documents\SKUPromotions\SKUPromotion.Library\bin\Debug\SKUPromotion.Library.exe.config
+C:\Users\dell\Documents\My Documents\SKUPromotions\SKUPromotion.Library\bin\Debug\SKUPromotion.Library.exe
+C:\Users\dell\Documents\My Documents\SKUPromotions\SKUPromotion.Library\bin\Debug\SKUPromotion.Library.pdb
+C:\Users\dell\Documents\My Documents\SKUPromotions\SKUPromotion.Library\obj\Debug\SKUPromotion.Library.csproj.CoreCompileInputs.cache
+C:\Users\dell\Documents\My Documents\SKUPromotions\SKUPromotion.Library\obj\Debug\SKUPromotion.Library.exe
+C:\Users\dell\Documents\My Documents\SKUPromotions\SKUPromotion.Library\obj\Debug\SKUPromotion.Library.pdb
