@@ -26,5 +26,18 @@ namespace SKUPromotions.Tests
             //Assert            
             Assert.AreEqual(expected, actual);
         }
+
+        [TestMethod]
+        public void NoPromoFailIncludedTest()
+        {
+            //Arrange
+            double AItems = 1, BItems = 1, CItems = 1, DItems = 0, expected = 110, actual = 0;
+
+            //Act
+            actual = _sut_skuPromos.CalculateTotalSKUPromotionAmount(AItems, BItems, CItems, DItems);
+
+            //Assert            
+            Assert.AreNotEqual(expected, actual);
+        }
     }
 }
