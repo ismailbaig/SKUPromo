@@ -23,31 +23,32 @@ namespace SKUPromotion.Library
     {
         double _totalAmount = 0, totalPromtionItems = 0, totalNonPromoItems = 0;
 		
-		private double CalculatePromoPriceForSingleItem(double totalUnits, int unitForPromoItems, int PromoPrice, int nonPromoPrice)
-        {
-            try
-            {
-                totalPromtionItems = Math.Floor(totalUnits / (int)(unitForPromoItems));
-                totalNonPromoItems = totalUnits % (int)(unitForPromoItems);
+		//private double CalculatePromoPriceForSingleItem(double totalUnits, int unitForPromoItems, int PromoPrice, int nonPromoPrice)
+  //      {
+  //          try
+  //          {
+  //              totalPromtionItems = Math.Floor(totalUnits / (int)(unitForPromoItems));
+  //              totalNonPromoItems = totalUnits % (int)(unitForPromoItems);
 
-                return totalPromtionItems * (int)(PromoPrice) + totalNonPromoItems * (int)(nonPromoPrice);
-            }
-            catch
-            {
-                throw;
-            }
-        }
+  //              return totalPromtionItems * (int)(PromoPrice) + totalNonPromoItems * (int)(nonPromoPrice);
+  //          }
+  //          catch
+  //          {
+  //              throw;
+  //          }
+  //      }
+
         public double CalculateTotalSKUPromotionAmount(double ATotalUnits, double BTotalUnits, double CTotalUnits, double DTotalUnits)
         {
             try
             {
 
                 #region A Promotion
-                _totalAmount += CalculatePromoPriceForSingleItem(ATotalUnits, (int)SKUUnitPrices.A_SKUs_To_Promo, (int)SKUUnitPrices.APromoPrice, (int)SKUUnitPrices.ANonPromoPrice);
+                _totalAmount += Util.CalculatePromoPriceForSingleItem(ATotalUnits, (int)SKUUnitPrices.A_SKUs_To_Promo, (int)SKUUnitPrices.APromoPrice, (int)SKUUnitPrices.ANonPromoPrice);
                 #endregion
 
                 #region B Promotion 
-                _totalAmount += CalculatePromoPriceForSingleItem(BTotalUnits, (int)SKUUnitPrices.B_SKUs_To_Promo, (int)SKUUnitPrices.BPromoPrice, (int)SKUUnitPrices.BNonPromoPrice);
+                _totalAmount += Util.CalculatePromoPriceForSingleItem(BTotalUnits, (int)SKUUnitPrices.B_SKUs_To_Promo, (int)SKUUnitPrices.BPromoPrice, (int)SKUUnitPrices.BNonPromoPrice);
                 #endregion
 
                 //Logic for C and D combined Promotion Price
