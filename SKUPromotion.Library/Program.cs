@@ -16,6 +16,7 @@ namespace SKUPromotion.Library
         B_SKUs_To_Promo = 2,
         APromoPrice = 130,
         BPromoPrice = 45,
+        CnDPromoPirce = 30,
     }
 
     public class SKUPromotions
@@ -48,6 +49,9 @@ namespace SKUPromotion.Library
                 #region B Promotion 
                 _totalAmount += CalculatePromoPriceForSingleItem(BTotalUnits, (int)SKUUnitPrices.B_SKUs_To_Promo, (int)SKUUnitPrices.BPromoPrice, (int)SKUUnitPrices.BNonPromoPrice);
                 #endregion
+
+                //Logic for C and D combined Promotion Price
+                _totalAmount += Math.Min(CTotalUnits, DTotalUnits) * (int)SKUUnitPrices.CnDPromoPirce;
 
                 //Logic for C or D Non Promo Price if left out
                 _totalAmount += (CTotalUnits - DTotalUnits) > 0 ? Math.Abs(CTotalUnits - DTotalUnits) * (int)(SKUUnitPrices.CNonPromoPrice) :
