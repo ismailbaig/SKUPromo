@@ -105,5 +105,18 @@ namespace SKUPromotions.Tests
             Assert.AreEqual(expected, actual);
         }
 
+        [TestMethod]
+        public void OnlyCnDPromoFailTest()
+        {
+            //Arrange
+            double AItems = 1, BItems = 1, CItems = 1, DItems = 1, expected = 200, actual = 0;
+
+            //Act
+            actual = _sut_skuPromos.CalculateTotalSKUPromotionAmount(AItems, BItems, CItems, DItems);
+
+            //Assert            
+            Assert.AreNotEqual(expected, actual);
+        }
+
     }
 }
