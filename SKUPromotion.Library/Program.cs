@@ -12,6 +12,8 @@ namespace SKUPromotion.Library
         BNonPromoPrice = 30,
         CNonPromoPrice = 20,
         DNonPromoPrice = 15,
+        A_SKUs_To_Promo = 3,
+        B_SKUs_To_Promo = 2,
     }
 
     public class SKUPromotions
@@ -21,8 +23,8 @@ namespace SKUPromotion.Library
         {
             try
             {
-                _totalAmount += ATotalUnits / 3 > 0 ? ATotalUnits * (int)SKUUnitPrices.ANonPromoPrice : 0;
-                _totalAmount += BTotalUnits / 2 > 0 ? ATotalUnits * (int)SKUUnitPrices.BNonPromoPrice : 0;
+                _totalAmount += ATotalUnits / (int)SKUUnitPrices.A_SKUs_To_Promo > 0 ? ATotalUnits * (int)SKUUnitPrices.ANonPromoPrice : 0;
+                _totalAmount += BTotalUnits / (int)SKUUnitPrices.B_SKUs_To_Promo > 0 ? ATotalUnits * (int)SKUUnitPrices.BNonPromoPrice : 0;
                 
                 //Logic for C or D Non Promo Price if left out
                 _totalAmount += (CTotalUnits - DTotalUnits) > 0 ? Math.Abs(CTotalUnits - DTotalUnits) * (int)(SKUUnitPrices.CNonPromoPrice) :
