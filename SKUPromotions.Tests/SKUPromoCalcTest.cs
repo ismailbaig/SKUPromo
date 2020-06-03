@@ -54,6 +54,19 @@ namespace SKUPromotions.Tests
         }
 
         [TestMethod]
+        public void OnlyAPromoFailTest()
+        {
+            //Arrange
+            double AItems = 3, BItems = 1, CItems = 1, DItems = 0, expected = 200, actual = 0;
+
+            //Act
+            actual = _sut_skuPromos.CalculateTotalSKUPromotionAmount(AItems, BItems, CItems, DItems);
+
+            //Assert            
+            Assert.AreNotEqual(expected, actual);
+        }
+
+        [TestMethod]
         public void OnlyBPromoTest()
         {
             //Arrange
