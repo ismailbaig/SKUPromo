@@ -45,8 +45,10 @@ namespace SKUPromotion.Library
                 _totalAmount += CalculatePromoPriceForSingleItem(ATotalUnits, (int)SKUUnitPrices.A_SKUs_To_Promo, (int)SKUUnitPrices.APromoPrice, (int)SKUUnitPrices.ANonPromoPrice);
                 #endregion
 
-                _totalAmount += BTotalUnits / (int)SKUUnitPrices.B_SKUs_To_Promo > 0 ? ATotalUnits * (int)SKUUnitPrices.BNonPromoPrice : 0;
-                
+                #region B Promotion 
+                _totalAmount += CalculatePromoPriceForSingleItem(BTotalUnits, (int)SKUUnitPrices.B_SKUs_To_Promo, (int)SKUUnitPrices.BPromoPrice, (int)SKUUnitPrices.BNonPromoPrice);
+                #endregion
+
                 //Logic for C or D Non Promo Price if left out
                 _totalAmount += (CTotalUnits - DTotalUnits) > 0 ? Math.Abs(CTotalUnits - DTotalUnits) * (int)(SKUUnitPrices.CNonPromoPrice) :
                                                                     Math.Abs(CTotalUnits - DTotalUnits) * (int)(SKUUnitPrices.DNonPromoPrice);
